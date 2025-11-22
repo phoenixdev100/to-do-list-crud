@@ -1,0 +1,139 @@
+.todo-item {
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+    position: relative;
+    overflow: hidden;
+}
+
+.todo-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: var(--primary-gradient);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.todo-item:hover::before {
+    opacity: 1;
+}
+
+.todo-item.completed {
+    opacity: 0.6;
+}
+
+.todo-item.completed .todo-title {
+    text-decoration: line-through;
+    color: var(--text-muted);
+}
+
+.todo-item.completed .todo-description {
+    text-decoration: line-through;
+}
+
+.todo-content {
+    flex: 1;
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: flex-start;
+}
+
+.todo-checkbox-wrapper {
+    padding-top: 0.25rem;
+}
+
+.todo-details {
+    flex: 1;
+}
+
+.todo-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.4;
+}
+
+.todo-description {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.5;
+}
+
+.todo-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    margin-top: var(--spacing-sm);
+}
+
+.due-date,
+.created-date {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.todo-actions {
+    display: flex;
+    gap: var(--spacing-xs);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.todo-item:hover .todo-actions {
+    opacity: 1;
+}
+
+.delete-btn:hover {
+    background: rgba(245, 87, 108, 0.2);
+    border-color: rgba(245, 87, 108, 0.3);
+    color: var(--priority-medium);
+}
+
+/* Edit Form */
+.todo-item.editing {
+    padding: var(--spacing-xl);
+}
+
+.todo-edit-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.edit-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: flex-end;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .todo-item {
+        flex-direction: column;
+    }
+
+    .todo-actions {
+        opacity: 1;
+        align-self: flex-end;
+    }
+
+    .todo-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-xs);
+    }
+}
